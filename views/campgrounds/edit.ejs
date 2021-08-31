@@ -1,0 +1,58 @@
+<% layout('/layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">Edit Campground</h1>
+        <div class="col-6 offset-3">
+            <!-- enctype="multipart/form-data" TO UPLOAD FILES, MUST BE IN <FORM>!!!-->
+            <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" novalidate
+                class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" name="campground[title]" id="title" required
+                        placeholder="<%= campground.title %>" value="<%= campground.title %>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="title">Location</label>
+                    <input class="form-control" type="text" name="campground[location]" id="location" required
+                        placeholder="<%=campground.location %>" value="<%= campground.location %>">
+                </div>
+                <!--FOR IMAGES => INPUT TYPE FILE, 
+                    ROUTER => UPLOAD.ARRAY('NAME OF "NAME" OF INPUT IN EJS FILE'),
+                    CONTROLLERS => CAMPGROUND.IMAGES = REQ.FILES.MAP(F => ({
+                        URL: F.PATH, FILENAME: F.FILENAME
+                    }))
+                    REQ.FILES TAKES THE FILES FROM THE BODY, MULTER NEEDED!
+                -->
+                <label for="price" class="form-label">Campgrounds Price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">€</span>
+                    <input name="campground[price]" id="price" type="text" class="form-control" required
+                        placeholder="<%= campground.price %>" value="<%= campground.price %>">
+                </div>
+                <div class="mb-3">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" name="campground[description]" required id="" cols="20" rows="2"
+                        placeholder="<%= campground.description %>"><%= campground.description %></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="image" class="form-label">Upload Images</label>
+                    <input class="form-control form-control-md" id="image" type="file" name="campground[images]"
+                        multiple>
+                </div>
+                <div class="row mb-3">
+                    <% campground.images.forEach(function (img, i) { %>
+                        <div class="col">
+                            <img src="<%= img.thumbnail %>" class="img-thumbnail">
+                            <div class="form check-inline">
+                                <input type="checkbox" id="<%= i %>" name="deleteImages[]" value="<%= img.filename %>">
+                                <label for="<%= i %>">Delete?</label>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info">Update Campground</button>
+                </div>
+            </form>
+            <a class="btn btn-primary mb-3" href="/campgrounds/<%= campground._id %>">Back To Campground</a>
+        </div>
+    </div>

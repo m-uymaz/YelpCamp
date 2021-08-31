@@ -1,0 +1,5 @@
+{
+    "javascript.suggest.enabled": false,
+    "editor.autoIndent": "none",
+    "html.validate.scripts": false
+}

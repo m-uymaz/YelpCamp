@@ -1,0 +1,71 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">New Campground</h1>
+        <div class="col-md-4 offset-md-4 justify-content-center mb-2">
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <!--enctype="multipart/form-data"-> for submiting files! -->
+                    <form action="/campgrounds" method="POST" class="validated-form"
+                        enctype="multipart/form-data" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="title">Title</label>
+                            <input class="form-control" type="text" name="campground[title]" id="title" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="title">Location</label>
+                            <input class="form-control" type="text" name="campground[location]" id="location" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <!-- <div class="mb-3">
+                    <label class="form-label" for="image">URL Image</label>
+                    <input required class="form-control" type="text" name="campground[image]" id="image" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div> -->
+                        <label for="price" class="form-label">Campgrounds Price</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">€</span>
+                            <input name="campground[price]" id="price" type="text" class="form-control"
+                                placeholder="0.00" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" name="campground[description]" id="" cols="20" rows="2"
+                                required></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <!--FOR IMAGES => INPUT TYPE FILE, 
+                                    ROUTER => UPLOAD.ARRAY('NAME OF "NAME" OF INPUT IN EJS FILE'),
+                                    CONTROLLERS => CAMPGROUND.IMAGES = REQ.FILES.MAP(F => ({
+                                        URL: F.PATH, FILENAME: F.FILENAME
+                                    }))
+                                    REQ.FILES TAKES THE FILES FROM THE BODY, MULTER NEEDED!
+                                -->
+                        <div class="mb-4">
+                            <label for="image" class="form-label">Upload Images</label>
+                            <input class="form-control form-control-md" id="image" type="file" name="campground[images]"
+                                multiple>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-success">Add Campground</button>
+                        </div>
+                    </form>
+                    <div class="mb-1">
+                        <a class="btn btn-primary" href="/campgrounds">Return to Campgrounds</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
