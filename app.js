@@ -3,10 +3,10 @@
 // and add the files to process.env.NODE_ENV
 // NODE_ENV - environment varieble
 // console.log(process.env.SECRET);
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
-// require('dotenv').config();
+// if (process.env.NODE_ENV !== 'production') {
+//     require('dotenv').config();
+// }
+require('dotenv').config();
 
 const express = require('express');
 const app = express();
