@@ -31,7 +31,7 @@ const CampgroundSchema = new Schema({
     price: {
         type: Number,
         min: 10,
-        max: 500
+        max: 15000
     },
     description: String,
     location: String,
@@ -39,6 +39,9 @@ const CampgroundSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: User
     },
+    usersReviewed: [{
+        type: String
+    }],
     reviews: [{
         type: Schema.Types.ObjectId,
         ref: Review
