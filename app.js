@@ -73,8 +73,7 @@ app.use(session(sessionConfig = {
         // secure: true,
         //When the coockie will expire in miliseconds
         // the below makes -> sec, min, hour, day, week
-        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-        maxAge: 1000 * 60 * 60 * 24 * 7
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 5
     },
     store: MongoDBStore.create({
         mongoUrl: dbUrl,
