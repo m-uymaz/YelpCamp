@@ -52,7 +52,7 @@ app.set('views', path.join(__dirname, 'views'));
 //Get Body Info
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-//Creates a public directory for use of scripts or other
+
 // app.use(express.static('public')); --- OLD CODE
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize())
