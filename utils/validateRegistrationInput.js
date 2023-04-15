@@ -6,8 +6,10 @@ const validateRegistrationInput = (username, email, password) => {
   const emailTest = emailRe.test(email);
   
   
-  if (usernameTest) {
-    return "Do not use spaces or special characters in username";
+  if (!username) {
+    return "Please provide a username"
+  } else if (usernameTest) {
+    return "Please do not use spaces or special characters in username";
   }
   if (!emailTest) {
     return "Not a valid email";
